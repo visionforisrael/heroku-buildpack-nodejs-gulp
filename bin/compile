@@ -85,21 +85,22 @@ install_bins() {
   fi
   warn_old_npm
 
-  if [ -d $CACHE_DIR/node/vendor/nasm ]; then
-    echo "Copying nasm from cache"
-    cp -r $CACHE_DIR/node/vendor/nasm $VENDOR_DIR
-  else
-    echo "Installing nasm from source"
-    NVERSION="2.11"
-    curl http://www.nasm.us/pub/nasm/releasebuilds/$NVERSION/nasm-$NVERSION.tar.gz -s | tar xz
-    cd nasm-$NVERSION
-    ./configure >/dev/null 2>&1 && make >/dev/null 2>&1
 
-    mkdir -p $VENDOR_DIR/nasm/bin
-    mv nasm $VENDOR_DIR/nasm/bin
-    chmod +x $VENDOR_DIR/nasm/bin/*
-  fi
-  PATH=$PATH:$VENDOR_DIR/nasm/bin
+  ##if [ -d $CACHE_DIR/node/vendor/nasm ]; then
+  #  echo "Copying nasm from cache"
+  #  cp -r $CACHE_DIR/node/vendor/nasm $VENDOR_DIR
+  # else
+  #  echo "Installing nasm from source"
+  #  NVERSION="2.11"
+  #  curl http://www.nasm.us/pub/nasm/releasebuilds/$NVERSION/nasm-$NVERSION.tar.gz -s | tar xz
+  #  cd nasm-$NVERSION
+  #  ./configure >/dev/null 2>&1 && make >/dev/null 2>&1
+  #
+  #  mkdir -p $VENDOR_DIR/nasm/bin
+  #  mv nasm $VENDOR_DIR/nasm/bin
+  #  chmod +x $VENDOR_DIR/nasm/bin/*
+  #fi
+  #PATH=$PATH:$VENDOR_DIR/nasm/bin
 
 }
 
